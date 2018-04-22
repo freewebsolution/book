@@ -1,0 +1,12 @@
+<div class="card bg-dark text-white mb-3">
+  <div *ngFor="let book of books" class="list-group-item list-group-item-action"  routerLink="/edit/{{book.id}}" [class.bg-warning.text-dark]="book === selectBook ">
+    <i class="fa fa-book" aria-hidden="true"></i> {{book.titolo}}
+    <div class="pull-right">
+      <strong *ngIf="book.prezzo" [style.color] ="book.prezzo > 20 ? 'red' : null">
+        € {{book.prezzo | number: '1.2'}}
+      </strong>
+      <i class="fa fa-info-circle" aria-hidden="true" routerLink="/info/{{book.id}}"></i>
+      <i class="fa fa-trash" aria-hidden="true" (click)="delete($event, book)"></i>
+    </div>
+  </div>
+</div>

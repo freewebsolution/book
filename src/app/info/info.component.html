@@ -1,0 +1,15 @@
+<div class="card bg-dark text-white mb-3">
+  <div class="container">
+    <h2>{{book.titolo | uppercase}}</h2>
+    <p>
+      <img [src]="book.img" class="img-thumbnail" width="200">
+    </p>
+    <p>Autore: {{book.autore}}</p>
+    <p>Isbn: {{book.isbn}}</p>
+    <p>Prezzo: € {{book.prezzo | number: '1.2'}}</p>
+    <p>Trama: <br/> {{book.trama}}</p>
+    <div style="margin-bottom: 10px">
+      <button class="btn btn-danger" (click)="goBack()">Go Back</button>
+    </div>
+  </div>
+</div>

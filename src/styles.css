@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+a, button{
+    outline: 0 !important;
+}
+
+body{
+    background-image: url('/assets/bg/bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+div.card {
+    background-color: rgba(0,0,0,0.7) !important;
+}
+.form-control {
+    background-color: rgba(0,0,0,0.4) !important;
+}
