@@ -12,31 +12,33 @@ const httpOption = {
 @Injectable()
 export class BookService {
 
-  private Api = ' http://localhost:3000/book';
+  private getApi = 'http://localhost/server/books.php';
+  private postApi = 'http://localhost/server/send.php';
+  private deleteUrl = 'http://localhost/server/delete.php';
   book: Book[];
 
   getBooks(): Observable<Book[]> {
-    return  this.http.get<Book[]>(this.Api);
+    return  this.http.get<Book[]>(this.getApi);
   }
   add(book: Book): Observable<any> {
-     book.id = this.Api.length + 1;
-    return this.http.post(this.Api , book, httpOption);
+   // book.id = this.Api.length + 1;
+    return this.http.post(this.postApi , book, httpOption);
   }
   edit(book: Book): Observable<any> {
-    return this.http.patch(this.Api + '/' + book.id , book, httpOption);
+    return this.http.put(this.postApi + '?id=' + book.id , book, httpOption);
   }
   delete(book: Book | number): Observable<any> {
     const idx = typeof book === 'number' ? book : book.id;
-    const url = `${this.Api}/${idx}`;
+    const url = this.deleteUrl + '?id=' + idx;
     return this.http.delete<any>(url);
   }
   getBook(id: number): Observable<Book> {
-    const url = `${this.Api}/${id}`;
+    const url = this.getApi + '?id=' + id;
     return this.http.get<Book>(url);
   }
 
   getInfo(id: number): Observable<Book> {
-    const url = `${this.Api}/${id}`;
+    const url = this.getApi + '?id=' + id;
     return this.http.get<Book>(url);
   }
   constructor(private http: HttpClient) { }

@@ -28,6 +28,9 @@ export class BookFormComponent implements OnInit {
    .subscribe(book => this.book = book);
    this.reset();
    this.router.navigate(['/books']);
+   setInterval(() => {
+    this.refresh();
+  }, 200);
   }
 
   edit(book) {
@@ -35,6 +38,9 @@ export class BookFormComponent implements OnInit {
     // tslint:disable-next-line:no-shadowed-variable
     .subscribe(book => this.book.id = book.id);
     this.router.navigate(['/books']);
+    setInterval(() => {
+      this.refresh();
+    }, 200);
   }
   reset() {
     this.book = new Book();
@@ -57,6 +63,10 @@ export class BookFormComponent implements OnInit {
   }
   goBack(): void {
     this.router.navigate(['/books']);
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
   ngOnInit() {
     this.getBook();

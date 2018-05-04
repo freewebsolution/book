@@ -30,9 +30,16 @@ export class NewComponent implements OnInit {
     // tslint:disable-next-line:no-shadowed-variable
     .subscribe(book => this.book = book);
     this.router.navigate(['/books']);
-  }
+    setInterval(() => {
+      this.refresh();
+    }, 200);
+    }
   goBack() {
     this.router.navigate(['/books']);
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
   ngOnInit() {
   }

@@ -6,7 +6,7 @@
         € {{book.prezzo | number: '1.2'}}
       </strong>
       <i class="fa fa-info-circle" aria-hidden="true" routerLink="/info/{{book.id}}"></i>
-      <i class="fa fa-trash" aria-hidden="true" (click)="delete($event, book)"></i>
+      <i class="fa fa-trash" aria-hidden="true" (click)="cancella($event, book)"></i>
     </div>
   </div>
 </div>

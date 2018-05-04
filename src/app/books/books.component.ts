@@ -11,25 +11,32 @@ import { Book } from '../model/book';
 export class BooksComponent implements OnInit {
 
   books: Book[];
+  book: Book[];
   selectBook: Book;
   constructor(private service: BookService) { }
 
   getBook(book: Book): void {
     this.selectBook = book;
   }
-  delete(event: MouseEvent, book: Book) {
+
+  cancella(event: MouseEvent, book ) {
     event.stopPropagation();
+    if (confirm('Sei sicuro di voler cancellare ' + book.titolo + '?')) {
+      this.delete(book);
+    }
+
+  }
+
+  delete(book: Book) {
     this.books = this.books.filter(h => h !== book);
     this.service.delete(book)
-    .subscribe();
+      .subscribe();
 
   }
   getBooks() {
-   this.service.getBooks()
-    .subscribe(books => this.books = books);
+    this.service.getBooks()
+      .subscribe(books => this.books = books);
   }
-
-
 
   ngOnInit() {
     this.getBooks();
